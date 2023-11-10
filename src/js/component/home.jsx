@@ -4,10 +4,6 @@ function TrafficLight() {
   const [colors, setColors] = useState(["red", "yellow", "green"]);
   const [currentColor, setCurrentColor] = useState("red");
 
-  const handleLightClick = (newColor) => {
-    setCurrentColor(newColor);
-  };
-
   const cycleColors = () => {
     const currentIndex = colors.indexOf(currentColor);
     const nextIndex = (currentIndex + 1) % colors.length;
@@ -30,7 +26,7 @@ function TrafficLight() {
           <div
             key={color}
             className={`light ${color} ${currentColor === color ? 'glow' : ''}`}
-            onClick={() => handleLightClick(color)}
+            onClick={() => setCurrentColor(color)}
           ></div>
         ))}
         <div>
