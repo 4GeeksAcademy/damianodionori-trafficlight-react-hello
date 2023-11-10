@@ -6,17 +6,12 @@ function TrafficLight() {
 
   const cycleColors = () => {
     const currentIndex = colors.indexOf(currentColor);
-    const nextIndex = (currentIndex + 1) % colors.length;
-    setCurrentColor(colors[nextIndex]);
+    setCurrentColor(colors[(currentIndex + 1) % colors.length]);
   };
 
-  const addPurpleColor = () => {
-    setColors([...colors, "purple"]);
-  };
-
-  const removePurpleColor = () => {
-    const filteredColors = colors.filter((color) => color !== "purple");
-    setColors(filteredColors);
+  const togglePurpleColor = () => {
+    const hasPurple = colors.includes("purple");
+    setColors(hasPurple ? colors.filter((color) => color !== "purple") : [...colors, "purple"]);
   };
 
   return (
@@ -31,8 +26,9 @@ function TrafficLight() {
         ))}
         <div>
           <button className="button" onClick={cycleColors}>Change Color</button>
-          <button className="button" onClick={addPurpleColor}>Add Purple</button>
-          <button className="button" onClick={removePurpleColor}>Remove Purple</button>
+          <button className="button" onClick={togglePurpleColor}>
+            {colors.includes("purple") ? "Remove Purple" : "Add Purple"}
+          </button>
         </div>
       </div>
     </div>
