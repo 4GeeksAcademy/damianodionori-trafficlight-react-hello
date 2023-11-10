@@ -5,13 +5,13 @@ function TrafficLight() {
   const [currentColor, setCurrentColor] = useState("red");
 
   const cycleColors = () => {
-    const currentIndex = colors.indexOf(currentColor);
-    setCurrentColor(colors[(currentIndex + 1) % colors.length]);
+    const currentIndex = colors.indexOf(currentColor); //getting the index of the currently active index in the array
+    setCurrentColor(colors[(currentIndex + 1) % colors.length]); //incrementing by one index per time and ensuring the index will not exceed the length of the array to make it cycle from the start
   };
 
   const togglePurpleColor = () => {
-    const hasPurple = colors.includes("purple");
-    setColors(hasPurple ? colors.filter((color) => color !== "purple") : [...colors, "purple"]);
+    const hasPurple = colors.includes("purple"); //checking if "purple" exists in the colors array, will return true or false
+    setColors(hasPurple ? colors.filter((color) => color !== "purple") : [...colors, "purple"]); //if hasPurple is true it will create a new array of colors without purple, otherwise the opposite
   };
 
   return (
