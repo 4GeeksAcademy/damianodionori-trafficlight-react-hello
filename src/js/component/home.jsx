@@ -18,6 +18,11 @@ function TrafficLight() {
     setColors([...colors, "purple"]);
   };
 
+  const removePurpleColor = () => {
+    const filteredColors = colors.filter((color) => color !== "purple");
+    setColors(filteredColors);
+  };
+
   return (
     <div className="centered-container">
       <div className="traffic-light">
@@ -31,6 +36,7 @@ function TrafficLight() {
         <div>
           <button className="button" onClick={cycleColors}>Change Color</button>
           <button className="button" onClick={addPurpleColor}>Add Purple</button>
+          <button className="button" onClick={removePurpleColor}>Remove Purple</button>
         </div>
       </div>
     </div>
